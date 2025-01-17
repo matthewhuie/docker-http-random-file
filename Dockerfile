@@ -6,6 +6,6 @@ RUN apk add --no-cache --update npm && \
 RUN mkdir -p /tmp/docker-http-random-file && \
     for i in 1 10 100 1000 1000 10000; do dd if=/dev/urandom of=/tmp/docker-http-random-file/random-"$i"MB bs=1M count="$i"; done
 
-EXPOSE 8080/tcp
+EXPOSE 80/tcp
 
-ENTRYPOINT ["http-server", "/tmp/docker-http-random-file"]
+ENTRYPOINT ["http-server", "/tmp/docker-http-random-file", "-p 80"]
