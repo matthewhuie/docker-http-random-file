@@ -1,13 +1,9 @@
-FROM alpine:latest
+FROM node:alpine
 
-ARG FILE_SIZES_MB="1 10 100 1000 10000"
+WORKDIR /app
 
-RUN apk add --no-cache --update npm && \
-    npm install http-server -g
+COPY server.js .
 
-RUN mkdir -p /tmp/docker-http-random-file && \
-    for i in ${FILE_SIZES_MB}; do dd if=/dev/urandom of=/tmp/docker-http-random-file/random-"$i"MB bs=1M count="$i"; done
+EXPOSE 80
 
-EXPOSE 80/tcp
-
-ENTRYPOINT ["http-server", "/tmp/docker-http-random-file", "-p 80"]
+ENTRYPOINT ["node", "server.js"]

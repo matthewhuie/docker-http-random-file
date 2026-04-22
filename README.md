@@ -1,28 +1,31 @@
 # docker-http-random-file
-This is a Docker container that provides a lightweight HTTP server, based on Alpine Linux. It runs a Node.js http-server on port 8080, hosting files of different sizes for testing purposes.
+This is a lightweight Docker container that streams random files of any size in real-time. It is based on Alpine Linux and uses Node.js to generate and stream random data on-the-fly.
+
+## Features
+- **Real-time Streaming**: No files are stored in the image, saving disk space
+- **Flexible Sizes**: Request files of any size in B (bytes), KB (kilobytes), MB (megabytes), GB (gigabytes), TB (terabytes) 
+- **Web Interface**: Simple HTML index page with sample file sizes
 
 ## Getting Started
-Build a Docker image locally from this repo.  By default, this repo will generate 1MB, 10MB, 100MB, 1000MB, 10000MB files.
+Build the Docker image locally:
 ```bash
 docker build \
   -t matthewhuie/http-random-file \
   github.com/matthewhuie/docker-http-random-file
 ```
 
-For specific file sizes, use the `FILE_SIZES_MB` build argument with space-delimited file sizes in MB.
+Create and start a container:
 ```bash
-docker build \
-  -t matthewhuie/http-random-file \
-  --build-arg FILE_SIZES_MB="100 200 300" \
-  github.com/matthewhuie/docker-http-random-file
+docker run -d -p 8080:80 matthewhuie/http-random-file
 ```
 
-Create and start a container.
-```bash
-docker run -d matthewhuie/http-random-file
-```
+## Usage
+Navigate to `http://localhost:8080/` to see the index page.
 
-Using an HTTP client, navigate to the HTTP server.
+You can also request specific file sizes directly via the URL, for example:
+- `http://localhost:8080/10MB`
+- `http://localhost:8080/2GB`
+- `http://localhost:8080/256KB`
 
 ## Links
 - https://github.com/matthewhuie/docker-http-random-file
