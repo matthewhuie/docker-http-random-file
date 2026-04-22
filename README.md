@@ -1,6 +1,8 @@
 # docker-http-random-file
 This is a lightweight Docker container that streams random files of any size in real-time. It is based on Alpine Linux and uses Node.js to generate and stream random data on-the-fly.
 
+[![docker-buildx](https://github.com/matthewhuie/docker-http-random-file/actions/workflows/docker-buildx.yaml/badge.svg)](https://github.com/matthewhuie/docker-http-random-file/actions/workflows/docker-buildx.yaml)
+
 ## Features
 - **Real-time Streaming**: No files are stored in the image, saving disk space
 - **Flexible Sizes**: Request files of any size in B (bytes), KB (kilobytes), MB (megabytes), GB (gigabytes), TB (terabytes) 
