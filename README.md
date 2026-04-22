@@ -31,3 +31,4 @@ You can also request specific file sizes directly via the URL, for example:
 
 ## Links
 - https://github.com/matthewhuie/docker-http-random-file
+- https://hub.docker.com/r/matthewhuie/http-random-file
